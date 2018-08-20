@@ -1,4 +1,5 @@
 import socketserver
+import math
 import protocol_utils as protocolUtils
 
 
@@ -8,14 +9,16 @@ class MessageHandler(socketserver.BaseRequestHandler):
     def operation(a, b):
         print("New operation in queue ", a, " ", b)
         try:
-            return float(a)-float(b)
+            val1 = float(a)
+            val2 = float(b)
         except ValueError:
             return "The operands requires be numbers"
+        return math.pow(float(val1), float(val2))
 
     def handle(self):
         protocol_instance = protocolUtils.MessageHandler(self.request.recv(1024))
         array_operands = protocol_instance.message_loads()
-        if array_operands[1] == "-":
+        if array_operands[1] == "^":
             result = self.operation(array_operands[0], array_operands[2])
             self.request.send(str(result).encode())
         else:
@@ -23,8 +26,8 @@ class MessageHandler(socketserver.BaseRequestHandler):
 
 
 def main():
-    server = socketserver.TCPServer((protocolUtils.server_sub_host, protocolUtils.server_sub_port), MessageHandler)
-    print("Server sub running ...")
+    server = socketserver.TCPServer((protocolUtils.server_pow_host, protocolUtils.server_pow_port), MessageHandler)
+    print("Server pow running ...")
     server.serve_forever()
 
 

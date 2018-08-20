@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d1bc97f8-29eb-4adc-b9ac-2cffcb17a6a3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/exercise2/add_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise2/add_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercise2/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise2/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercise2/server_interm_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise2/server_interm_layer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercise2/protocol_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise2/protocol_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercise2/sub_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise2/sub_server.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,7 +30,7 @@
       <file leaf-file-name="server_interm_layer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exercise2/server_interm_layer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="255">
               <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -42,29 +42,17 @@
       <file leaf-file-name="protocol_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exercise2/protocol_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="364">
+              <caret line="51" column="35" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_server.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/exercise2/add_server.py">
+      <file leaf-file-name="log_server.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/exercise2/log_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sub_server.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/exercise2/sub_server.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            <state relative-caret-position="187">
+              <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -80,12 +68,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/exercise2/protocol_utils.py" />
         <option value="$PROJECT_DIR$/exercise2/protocolUtils.py" />
         <option value="$PROJECT_DIR$/exercise2/client.py" />
         <option value="$PROJECT_DIR$/exercise2/server_interm_layer.py" />
-        <option value="$PROJECT_DIR$/exercise2/sub_server.py" />
         <option value="$PROJECT_DIR$/exercise2/add_server.py" />
+        <option value="$PROJECT_DIR$/exercise2/root_server.py" />
+        <option value="$PROJECT_DIR$/exercise1/protocol_utils.py" />
+        <option value="$PROJECT_DIR$/exercise2/div_server.py" />
+        <option value="$PROJECT_DIR$/exercise2/mult_server.py" />
+        <option value="$PROJECT_DIR$/exercise2/pow_server.py" />
+        <option value="$PROJECT_DIR$/exercise2/sub_server.py" />
+        <option value="$PROJECT_DIR$/exercise2/protocol_utils.py" />
+        <option value="$PROJECT_DIR$/exercise2/log_server.py" />
       </list>
     </option>
   </component>
@@ -245,23 +239,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exercise2/protocol_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exercise2/server_interm_layer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/exercise2/client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -274,8 +251,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exercise2/add_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+        <state relative-caret-position="170">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise1/protocol_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise2/div_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise2/mult_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise2/pow_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise2/root_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -284,8 +308,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exercise2/sub_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        <state relative-caret-position="289">
+          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise2/server_interm_layer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise2/protocol_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="51" column="35" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise2/log_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

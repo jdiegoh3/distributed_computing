@@ -4,9 +4,13 @@ import protocol_utils as protocolUtils
 
 class MessageHandler(socketserver.BaseRequestHandler):
 
-    def operation(self, a, b):
+    @staticmethod
+    def operation(a, b):
         print("New operation in queue ", a, " ", b)
-        return float(a)+float(b)
+        try:
+            return float(a)+float(b)
+        except ValueError:
+            return "The operands requires be numbers"
 
     def handle(self):
         protocol_instance = protocolUtils.MessageHandler(self.request.recv(1024))
