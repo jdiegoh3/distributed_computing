@@ -20,7 +20,7 @@ class MessageHandler(socketserver.BaseRequestHandler):
 
 def main():
     server = socketserver.TCPServer((protocolUtils.server_add_host, protocolUtils.server_add_port), MessageHandler)
-    print("Server add running ...")
+    print("Server sub running ...")
     server.serve_forever()
 
 
