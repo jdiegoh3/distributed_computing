@@ -14,10 +14,17 @@ def main():
 
     socket_instance.send(message_builder.operation.encode())
 
-    server = socket_instance.recv(1024)
-    print("Server direct ", server.decode("utf-8"))
+    server = protocolUtils.MessageHandler(socket_instance.recv(1024)).message_loads()
+    server_host, server_port = server[0], int(server[2])
 
+    # Close the actual session to start the new with the server of the operation
     socket_instance.close()
+
+    socket_instance = socket.socket()
+    socket_instance.connect((server_host, server_port))
+    socket_instance.send(message_builder.message_builder().encode())
+    result = socket_instance.recv(1024).decode()
+    print("Result: ", result)
 
 
 if __name__ == "__main__":

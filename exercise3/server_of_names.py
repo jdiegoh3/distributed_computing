@@ -1,5 +1,4 @@
 import socketserver
-import socket
 import lib.ProtocolUtils as protocolUtils
 
 server_add_host = "localhost"
