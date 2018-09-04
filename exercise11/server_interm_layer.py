@@ -73,7 +73,8 @@ if __name__ == "__main__":
     root_server = protocolUtils.ClientThread('http://localhost:9006')
     root_server.start()
 
-    root_server = protocolUtils.ClientThread('http://localhost:9007')
-    root_server.start()
+    log_server = protocolUtils.ClientThread('http://localhost:9007')
+    log_server.start()
+    
     main()
 
