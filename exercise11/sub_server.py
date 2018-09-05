@@ -13,6 +13,7 @@ def main():
     server = protocolUtils.ServerThread("localhost", 9002)
     server.register_class_functions(RegisteredFunctions())
     server.start()
+    print("Running sub server...")
 
 
 if __name__ == '__main__':

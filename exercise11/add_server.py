@@ -13,6 +13,7 @@ def main():
     server = protocolUtils.ServerThread("localhost", 9001)
     server.register_class_functions(RegisteredFunctions())
     server.start()
+    print("Running add server...")
 
 
 if __name__ == '__main__':

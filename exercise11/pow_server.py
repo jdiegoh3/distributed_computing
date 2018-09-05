@@ -14,6 +14,7 @@ def main():
     server = protocolUtils.ServerThread("localhost", 9005)
     server.register_class_functions(RegisteredFunctions())
     server.start()
+    print("Running pow server...")
 
 
 if __name__ == '__main__':

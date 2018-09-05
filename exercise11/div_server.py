@@ -18,6 +18,7 @@ def main():
     server = protocolUtils.ServerThread("localhost", 9003)
     server.register_class_functions(RegisteredFunctions())
     server.start()
+    print("Running div server...")
 
 
 if __name__ == '__main__':

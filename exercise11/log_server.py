@@ -19,6 +19,7 @@ def main():
     server = protocolUtils.ServerThread("localhost", 9007)
     server.register_class_functions(RegisteredFunctions())
     server.start()
+    print("Running log server...")
 
 
 if __name__ == '__main__':
