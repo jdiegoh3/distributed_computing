@@ -1,5 +1,3 @@
-from xmlrpc import client
-from xmlrpc.server import SimpleXMLRPCServer
 from xmlrpc.server import SimpleXMLRPCRequestHandler
 import lib.ProtocolUtils as protocolUtils
 
@@ -17,32 +15,32 @@ class RegisteredFunctions:
 
     @staticmethod
     def mult(num1, num2):
-        result = mul_server.function(num1, num2)
+        result = mul_server.call_function(num1, num2)
         return result
 
     @staticmethod
     def div(num1, num2):
-        result = div_server.function(num1, num2)
+        result = div_server.call_function(num1, num2)
         return result
 
     @staticmethod
     def root(num1, num2):
-        result = root_server.function(num1, num2)
+        result = root_server.call_function(num1, num2)
         return result
 
     @staticmethod
     def pow(num1, num2):
-        result = pow_server.function(num1, num2)
+        result = pow_server.call_function(num1, num2)
         return result
 
     @staticmethod
     def sub(num1, num2):
-        result = sub_server.function(num1, num2)
+        result = sub_server.call_function(num1, num2)
         return result
 
     @staticmethod
     def log(num1, num2):
-        result = log_server.function(num1, num2)
+        result = log_server.call_function(num1, num2)
         return result
 
 
