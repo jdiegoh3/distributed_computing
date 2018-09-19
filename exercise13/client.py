@@ -20,4 +20,3 @@ if __name__ == "__main__":
     # print("Resultado de la operacion fue ", result.decode("utf-8"))
     # socket_instance.close()
     client = protocolUtils.ClientBuilder()
-    num1 = input("Ingrese un numero: ")
