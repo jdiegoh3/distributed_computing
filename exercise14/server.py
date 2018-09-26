@@ -5,22 +5,8 @@ import time
 import pytz
 import os
 import ntplib
+from lib.MyUtils import TimeBuilder
 
-
-class TimeFromServer(object):
-    time = None
-
-    def __init__(self, actual_time):
-        self.time = actual_time
-
-    def add(self, timedelta):
-        self.time = self.time + timedelta
-
-    def get_time(self):
-        return self.time
-
-    def get_timestamp(self):
-        return self.time.timestamp()
 
 def client_handler(conn, address):
     while True:
@@ -48,9 +34,9 @@ def pprint_timezone():
 if __name__ == '__main__':
     ntp = ntplib.NTPClient()
     # Provide the respective ntp server ip in below function
-    response = ntp.request('3.south-america.pool.ntp.org')
+    response = ntp.request('2.south-america.pool.ntp.org')
 
-    datetime_server = TimeFromServer(datetime.datetime.fromtimestamp(response.tx_time, pytz.timezone('America/Bogota')))
+    datetime_server = TimeBuilder(datetime.datetime.fromtimestamp(response.tx_time, pytz.timezone('America/Bogota')))
 
     # utc = datetime.datetime.utcnow().astimezone(pytz.utc)
 
