@@ -11,8 +11,9 @@ from lib.MyUtils import TimeBuilder
 def client_handler(conn, address):
     while True:
         raw_data = conn.recv(1024)
-        print(raw_data)
+        print("Message received from ", address, ": ", raw_data)
         conn.send(str(datetime_server.get_timestamp()).encode())
+
 
 def main():
     timer_thread = threading.Thread(target=timer)
@@ -24,12 +25,14 @@ def timer():
         datetime_server.add(datetime.timedelta(seconds=1))
         time.sleep(1)
 
+
 def pprint_timezone():
     val = 1
     while val:
         val = int(input("Get time? "))
         print("Datetime: ", datetime_server.get_time())
         print("Datetime: ", datetime_server.get_timestamp())
+
 
 if __name__ == '__main__':
     ntp = ntplib.NTPClient()
@@ -62,4 +65,4 @@ if __name__ == '__main__':
 
         threads_list.append(temp_thread)
         temp_thread.start()
-    
+

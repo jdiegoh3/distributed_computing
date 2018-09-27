@@ -1,5 +1,8 @@
 import datetime
 
+get_time_server_delay = 10
+
+
 class TimeBuilder(object):
     time = None
 
@@ -14,6 +17,7 @@ class TimeBuilder(object):
 
     def get_timestamp(self):
         return self.time.timestamp()
+
 
 class ClientIncrementBuilder(object):
     client_so_fast = False

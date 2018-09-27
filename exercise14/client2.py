@@ -10,21 +10,22 @@ def get_time_from_server():
     while True:
         socket_instance.send("get_time".encode())
         result = socket_instance.recv(1024)
-        datetime_updated = TimeBuilder(datetime.datetime.fromtimestamp(float(result.decode()), pytz.timezone('America/Bogota')))
+        datetime_updated = TimeBuilder(
+            datetime.datetime.fromtimestamp(float(result.decode()), pytz.timezone('America/Bogota')))
 
         if datetime_updated.get_time() < datetime_actual.get_time():
             offset = datetime_actual.get_time() - datetime_updated.get_time()
-            print(offset*2)
-            client_increment.set_values(True, 2, offset*2, datetime.timedelta())
+            print(offset * 2)
+            client_increment.set_values(True, 2, offset * 2, datetime.timedelta())
 
         elif datetime_updated.get_time() > datetime_actual.get_time():
             datetime_actual.time = datetime_updated.get_time()
-        
+
         print("[Server]: Updated time.")
         time.sleep(get_time_server_delay)
 
 
-def timer(): 
+def timer():
     while True:
         if client_increment.client_so_fast:
             if client_increment.added_offset < client_increment.client_increment_time:
@@ -40,7 +41,7 @@ def timer():
 
 if __name__ == "__main__":
     # Client upper for 5 minutes
-    print("Client upper for 5 minutes running..")
+    print("Client upper for 1 minutes running..")
 
     datetime_actual = None
     datetime_updated = None
@@ -54,11 +55,13 @@ if __name__ == "__main__":
 
     client_increment = ClientIncrementBuilder()
 
-    datetime_actual = TimeBuilder(datetime.datetime.fromtimestamp(float(result.decode()), pytz.timezone('America/Bogota')) + datetime.timedelta(minutes=5))
+    datetime_actual = TimeBuilder(
+        datetime.datetime.fromtimestamp(float(result.decode()), pytz.timezone('America/Bogota')) + datetime.timedelta(
+            minutes=1))
 
     timer_thread = threading.Thread(target=timer)
     timer_thread.start()
-    
+
     get_time_thread = threading.Thread(target=get_time_from_server)
     get_time_thread.start()
 
