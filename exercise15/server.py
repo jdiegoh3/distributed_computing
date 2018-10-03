@@ -4,25 +4,27 @@ import datetime
 import time
 import pytz
 import os
+import sys
 import ntplib
-from lib.MyUtils import TimeBuilder
+from lib.MyUtils import TimeBuilder, ProcessManager
 
 
 def client_handler(conn, address):
     while True:
-        raw_data = conn.recv(1024)
-        split_data = raw_data.decode("utf-8").split("|")
-        print(15)
-        if split_data[0] == "my_time":
-            print(split_data[1])
-
-            yes = datetime.datetime.fromtimestamp(float(split_data[1]), pytz.timezone('America/Bogota'))
-            print(20)
-            print("asasasasasasasasasas", yes)
-        print("Message received from ", split_data)
-        print(21)
-        conn.send("Response".encode())
-
+        try:
+            raw_data = conn.recv(1024)
+            split_data = raw_data.decode("utf-8").split("|")
+            print(15)
+            if split_data[0] == "my_time":
+                print(split_data[1])
+                timestamp = float(split_data[1])
+                process_manager.add_datetime(timestamp)
+                process_manager.send_broadcast()
+            print("Message received from ", split_data)
+            conn.send("Received".encode())
+        except Exception as e:
+            print("Connection lost.")
+            sys.exit(0)
 
 def main():
     timer_thread = threading.Thread(target=timer)
@@ -44,6 +46,7 @@ if __name__ == '__main__':
     datetime_server = None
     main()
 
+    process_manager = ProcessManager()
     socket_instance = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socket_instance.bind(('', 9999))
     socket_instance.listen(10)
@@ -53,6 +56,8 @@ if __name__ == '__main__':
     while True:
         conn, address = socket_instance.accept()
         print("New connection entry from ", address)
+
+        process_manager.add_process(address)
 
         temp_thread = threading.Thread(target=client_handler, args=(conn, address,))
 

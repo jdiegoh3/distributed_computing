@@ -69,7 +69,7 @@ if __name__ == "__main__":
     listen_thread = threading.Thread(target=my_listener, args=(socket_instance,))
     listen_thread.start()
 
-    datetime_actual = TimeBuilder(datetime.datetime.now())
+    datetime_actual = TimeBuilder(datetime.datetime.now() - datetime.timedelta(minutes=5))
 
     socket_instance.send(("my_time|" + str(datetime_actual.get_timestamp())).encode())
     result = socket_instance.recv(1024)

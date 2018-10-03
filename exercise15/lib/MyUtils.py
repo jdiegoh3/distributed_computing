@@ -1,6 +1,40 @@
 import datetime
+import socket
 
 get_time_server_delay = 10
+
+
+class ProcessManager(object):
+    process_list = []
+    datetime_list = []
+
+    def __init__(self):
+        pass
+
+    def add_process(self, process_info):
+        self.process_list.append(process_info)
+
+    def add_datetime(self, datetime_from):
+        self.datetime_list.append(datetime_from)
+
+    def get_datetime_average(self):
+        avg = 0
+        counter = 0
+
+        for time in self.datetime_list:
+            avg = avg + time
+            counter = counter + 1
+
+        return avg/counter
+
+    def send_broadcast(self):
+        for process in self.process_list:
+            try:
+                socket_temp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                socket_temp.connect((process[0], process[1]))
+                socket_temp.send(str(self.get_datetime_average()).encode())
+            except Exception as e:
+                print("Client {} disconnected.".format(str(process[1])))
 
 
 class TimeBuilder(object):
