@@ -22,11 +22,18 @@ class OccupiedDevices(Elements):
         pass
 
 
+class UnClassifiedClients(Elements):
+    def __init__(self):
+        pass
+
+
 class MessageHandler(object):
     body = None
 
     def __init__(self, message):
-        self.body = message.decode("utf-8")
+        if not isinstance(message, str):
+            message = message.decode("utf-8")
+        self.body = message
 
     def message_loads(self):
         if self.body:
@@ -44,7 +51,7 @@ class MessageBuilder(object):
             self.message += string + "|"
 
     def get_message(self):
-        return self.message
+        return self.message.encode()
 
 
 
