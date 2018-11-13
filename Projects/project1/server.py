@@ -89,7 +89,7 @@ if __name__ == '__main__':
     unclassified_clients = MyUtils.UnClassifiedClients()
 
     socket_instance = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    socket_instance.bind(('', 9999))
+    socket_instance.bind(('LocalHost', 999))
     socket_instance.listen(10)
 
     threads_list = []

@@ -27,7 +27,7 @@ def my_listener(socket_instance):
 
 if __name__ == "__main__":
     socket_instance = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    socket_instance.connect(("192.168.0.19", 9999))
+    socket_instance.connect(("LocalHost", 999))
     print(socket_instance.getsockname())
 
     listen_thread = threading.Thread(target=my_listener, args=(socket_instance,))
