@@ -16,5 +16,5 @@ if __name__ == "__main__":
         mss = input('For create new task to delegate press enter')
         cpu = input('cpu: ')
         memory = input('memory: ')
-        time_factor = input('time_factor')
+        time_factor = input('time_factor: ')
         client.delegate_task(int(cpu), int(memory), int(time_factor))

@@ -125,17 +125,20 @@ class Client(object):
         split_message = MessageHandler(message).message_loads()
         if split_message[0] == 'get_resources':
             if not self.occupied:
-                if split_message[1] <= self.resources.free_cpu and split_message[2] <= self.resources.free_memory:
+                if int(split_message[1]) <= self.resources.free_cpu and int(split_message[2]) <= self.resources.free_memory:
                     # the message have cpu [1], memory [2], time_factor [3]
-                    id = self.resources.add_task(split_message[1], split_message[2], addr, split_message[3])
+                    id = self.resources.add_task(int(split_message[1]), int(split_message[2]), [split_message[4], int(split_message[5])], int(split_message[3]))
                     if id != 0:
                         sc.send(MessageBuilder([id], 'ok').get_message())
-                        instance = threading.Thread(target=self.resolveTask, args=(id))
+                        instance = threading.Thread(target=self.resolveTask, args=(id, ))
                         instance.start()
                     else:
                         sc.send(MessageBuilder(['No have resources'], 'error').get_message())
             else:
                 sc.send(MessageBuilder(['No have resources'], 'error').get_message())
+        elif split_message[0] == 'task_resolved':
+            print("task_resolved, id: "+split_message[1])
+            sc.send(MessageBuilder([''], 'ok').get_message())
         else:
             sc.send(MessageBuilder(['No exist function: '+split_message[0]], 'error').get_message())
         sc.close()
@@ -143,10 +146,11 @@ class Client(object):
     def resolveTask(self, id):
         task = self.resources.get_task(id)
         time_of_task = (task[1].memory / task[1].cpu) * task[1].time_factor
-        print("running task id: "+str(id)+", time: "+str(time_of_task))
+        print("running task id: "+str(id)+", time: "+str(time_of_task)+", address: "+task[2][0]+", "+str(task[2][1]))
         time.sleep(time_of_task)
         message = MessageBuilder([id], 'task_resolved').get_message()
-        send_message(task[2][0], task[2][1], message)
+        response = send_message(task[2][0], task[2][1], message)
+        print(response.decode())
         self.resources.delete_task(id)
         print("Task is resolved id: " + str(id) + ", time: " + str(time_of_task))
         self.notify_status_to_server()
@@ -162,26 +166,31 @@ class Client(object):
             self.delegate_task(task[1])
             self.resources.delete_task(task[0])
 
-    def delegate_task(self, cpu, memory, time_factor=1):
+    def delegate_task(self, cpu, memory, time_factor=1, count_intent=0):
+        if count_intent > 4:
+            print("Sorry but can not delegate the task, please try again")
+            return
+        count_intent = count_intent+1
         print("delegating task cpu: " + str(cpu) + ", memory: " + str(memory) + ", time_factor: " + str(time_factor))
-        message = MessageBuilder([cpu, memory, time_factor], 'get_resources').get_message()
+        message = MessageBuilder([cpu, memory, time_factor, self.my_host, self.my_port], 'get_resources').get_message()
         self.socket_to_server.send(message)
         response = self.socket_to_server.recv(1024)
         split_message = MessageHandler(response).message_loads()
         if split_message[0] == "400":
-            print("can not delegate task, trying again in 10s...")
-            time.sleep(10)
-            self.delegate_task(cpu,memory,time_factor)
+            print("can not delegate task, trying again in 5s...")
+            time.sleep(5)
+            self.delegate_task(cpu,memory,time_factor, count_intent)
         elif split_message[0] == "not_working":
+            print("client to solve task is: "+split_message[1]+", "+split_message[2])
             response = send_message(split_message[1], int(split_message[2]), message)
             split_message1 = MessageHandler(response).message_loads()
             if split_message1[0] == "ok":
                 print("delegated task to: "+split_message[1]+", "+split_message[2]+", task_id: "+split_message1[1])
             else:
                 print("response: "+split_message1[0]+", "+split_message1[1])
-                print("can not delegate task, trying again in 10s...")
-                time.sleep(10)
-                self.delegate_task(cpu, memory, time_factor)
+                print("can not delegate task, trying again in 5s...")
+                time.sleep(5)
+                self.delegate_task(cpu, memory, time_factor, count_intent)
         else:
             print("error-ER0001 - Unknown error")
 
