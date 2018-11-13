@@ -6,13 +6,13 @@ class Elements(object):
     def __init__(self, elements):
         self.elements = elements
 
-    def add_element(self, process_info):
-        self.elements.append(process_info)
+    def add_element(self, id, process_info):
+        self.elements[id] = process_info
 
-    def remove_element(self, device_info):
+    def remove_element(self, id):
         try:
-            self.elements.remove(device_info)
-        except ValueError as error:
+            del self.elements[id]
+        except KeyError as error:
             print("Doesn't exist")
 
     def list_elements(self):
@@ -20,7 +20,7 @@ class Elements(object):
 
 
 class FreeDevices(Elements):
-    elements = []
+    elements = {}
 
     def __init__(self):
         super().__init__(self.elements)
@@ -28,7 +28,7 @@ class FreeDevices(Elements):
 
 
 class OccupiedDevices(Elements):
-    elements = []
+    elements = {}
 
     def __init__(self):
         super().__init__(self.elements)
@@ -36,7 +36,7 @@ class OccupiedDevices(Elements):
 
 
 class UnClassifiedClients(Elements):
-    elements = []
+    elements = {}
 
     def __init__(self):
         super().__init__(self.elements)
