@@ -72,7 +72,7 @@ def client_handler(conn, address):
                 device_list = free_devices.list_elements()
                 for device in device_list:
                     if device_list[device].get("cpu", None) >= processor and device_list[device].get("ram") >= ram:
-                        message = MyUtils.MessageBuilder([device.get("ip"), device.get("port")], "not_working")
+                        message = MyUtils.MessageBuilder([device_list[device].get("ip"), device_list[device].get("port")], "not_working")
             else:
                 device_list = free_devices.list_elements()
                 rand = random.randint(0, len(device_list)-1)
