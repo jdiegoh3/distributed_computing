@@ -33,11 +33,11 @@ if __name__ == "__main__":
     listen_thread = threading.Thread(target=my_listener, args=(socket_instance,))
     listen_thread.start()
 
-    socket_instance.send(MyUtils.MessageBuilder([], 'free').get_message())
+    socket_instance.send(MyUtils.MessageBuilder([cpu, ram], 'not_working').get_message())
     result = socket_instance.recv(1024)
 
     while 1:
-        mss = input('free or occupied : ')
-        socket_instance.send(MyUtils.MessageBuilder([], mss).get_message())
+        mss = input('not_working or occupied : ')
+        socket_instance.send(MyUtils.MessageBuilder([cpu, ram], mss).get_message())
         result = socket_instance.recv(1024)
         print(result.decode())
