@@ -75,7 +75,7 @@ def client_handler(conn, address):
                         message = MyUtils.MessageBuilder([device.get("ip"), device.get("port")], "not_working")
             else:
                 device_list = free_devices.list_elements()
-                rand = random.randint(0, len(device_list))
+                rand = random.randint(0, len(device_list)-1)
                 device = free_devices.list_elements()[list(free_devices.list_elements())[rand]]
                 message = MyUtils.MessageBuilder([device.get("ip"), device.get("port")], "not_working")
 
