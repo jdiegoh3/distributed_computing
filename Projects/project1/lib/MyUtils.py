@@ -184,10 +184,10 @@ class Client(object):
             print("client to solve task is: "+split_message[1]+", "+split_message[2])
             response = send_message(split_message[1], int(split_message[2]), message)
             split_message1 = MessageHandler(response).message_loads()
-            if split_message1[0] == "ok":
+            if split_message1 and split_message1[0] == "ok":
                 print("delegated task to: "+split_message[1]+", "+split_message[2]+", task_id: "+split_message1[1])
             else:
-                print("response: "+split_message1[0]+", "+split_message1[1])
+                #print("response: "+split_message1[0]+", "+split_message1[1])
                 print("can not delegate task, trying again in 5s...")
                 time.sleep(5)
                 self.delegate_task(cpu, memory, time_factor, count_intent)

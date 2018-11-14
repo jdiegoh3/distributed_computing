@@ -1,8 +1,8 @@
 import lib.MyUtils as MyUtils
 import threading
 
-server_host = "LocalHost"
-server_port = 999
+server_host = "192.168.0.19"
+server_port = 9999
 occupied = False
 cpu = 1000
 memory = 2000
