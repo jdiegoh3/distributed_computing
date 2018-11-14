@@ -14,7 +14,7 @@ class Elements(object):
         try:
             del self.elements[id]
         except KeyError as error:
-            print("Doesn't exist")
+            pass
 
     def list_elements(self):
         return self.elements
@@ -64,6 +64,7 @@ def send_message(host, port, message):
     temporal_socket_instance.send(message)
     result = temporal_socket_instance.recv(1024)
     return result
+
 
 class MessageBuilder(object):
     message = ""
@@ -240,7 +241,6 @@ class Resources:
         self.used_memory = used_memory
         self.free_cpu = self.cpu - self.used_cpu
         self.free_memory = self.memory - self.used_memory
-
 
     def add_task(self, cpu, memory, address, time_factor=0):
         if cpu <= self.free_cpu and memory <= self.free_memory:

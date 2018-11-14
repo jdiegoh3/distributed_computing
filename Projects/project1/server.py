@@ -6,80 +6,90 @@ import threading
 
 def client_handler(conn, address):
     while True:
-        raw_data = conn.recv(1024)
-        split_data = MyUtils.MessageHandler(raw_data).message_loads()
-        print(split_data)
-        operation = split_data[0]
+        try:
+            raw_data = conn.recv(1024)
+            split_data = MyUtils.MessageHandler(raw_data).message_loads()
+            print(split_data)
+            operation = split_data[0]
 
-        if operation == "not_working":
-            try:
-                processor = split_data[1]
-                ram = split_data[2]
-            except Exception as e:
-                # Return
-                message = MyUtils.MessageBuilder([0], "400")
+            if operation == "not_working":
+                try:
+                    processor = split_data[1]
+                    ram = split_data[2]
+                except Exception as e:
+                    # Return
+                    message = MyUtils.MessageBuilder([0], "400")
+                    conn.send(message.get_message())
+
+                identifier = str(address[0]) + str(address[1])
+                body = {
+                    "ip": address[0],
+                    "port": address[1],
+                    "cpu": processor,
+                    "ram": ram
+                }
+                unclassified_clients.remove_element(identifier)
+                occupied_devices.remove_element(identifier)
+                free_devices.add_element(identifier, body)
+                print(free_devices.list_elements())
+                message = MyUtils.MessageBuilder([0], "received")
                 conn.send(message.get_message())
 
-            identifier = str(address[0]) + str(address[1])
-            body = {
-                "ip": address[0],
-                "port": address[1],
-                "cpu": processor,
-                "ram": ram
-            }
-            unclassified_clients.remove_element(identifier)
-            occupied_devices.remove_element(identifier)
-            free_devices.add_element(identifier, body)
-            print(free_devices.list_elements())
-            message = MyUtils.MessageBuilder([0], "received")
-            conn.send(message.get_message())
+            elif operation == "occupied":
+                try:
+                    processor = split_data[1]
+                    ram = split_data[2]
+                except Exception as e:
+                    # Return
+                    message = MyUtils.MessageBuilder([0], "400")
+                    conn.send(message.get_message())
 
-        elif operation == "occupied":
-            try:
-                processor = split_data[1]
-                ram = split_data[2]
-            except Exception as e:
-                # Return
-                message = MyUtils.MessageBuilder([0], "400")
+                identifier = str(address[0]) + str(address[1])
+                body = {
+                    "ip": address[0],
+                    "port": address[1],
+                    "cpu": processor,
+                    "ram": ram
+                }
+                unclassified_clients.remove_element(identifier)
+                free_devices.remove_element(identifier)
+                occupied_devices.add_element(identifier, body)
+                print(occupied_devices.list_elements())
+
+                message = MyUtils.MessageBuilder([0], "received")
                 conn.send(message.get_message())
 
+            elif operation == "get_resources":
+                try:
+                    processor = split_data[1]
+                    ram = split_data[2]
+                except Exception as e:
+                    # Return
+                    message = MyUtils.MessageBuilder([0], "400")
+                    conn.send(message.get_message())
+
+                message = MyUtils.MessageBuilder([0], "400")
+                if processor and ram:
+                    device_list = free_devices.list_elements()
+                    for device in device_list:
+                        if device_list[device].get("cpu", None) >= processor and device_list[device].get("ram") >= ram:
+                            message = MyUtils.MessageBuilder([device_list[device].get("ip"), device_list[device].get("port")], "not_working")
+                else:
+                    device_list = free_devices.list_elements()
+                    rand = random.randint(0, len(device_list)-1)
+                    device = free_devices.list_elements()[list(free_devices.list_elements())[rand]]
+                    message = MyUtils.MessageBuilder([device.get("ip"), device.get("port")], "not_working")
+
+                conn.send(message.get_message())
+
+        except ConnectionResetError as e:
             identifier = str(address[0]) + str(address[1])
-            body = {
-                "ip": address[0],
-                "port": address[1],
-                "cpu": processor,
-                "ram": ram
-            }
             unclassified_clients.remove_element(identifier)
             free_devices.remove_element(identifier)
-            occupied_devices.add_element(identifier, body)
-            print(occupied_devices.list_elements())
+            occupied_devices.remove_element(identifier)
 
-            message = MyUtils.MessageBuilder([0], "received")
-            conn.send(message.get_message())
-
-        elif operation == "get_resources":
-            try:
-                processor = split_data[1]
-                ram = split_data[2]
-            except Exception as e:
-                # Return
-                message = MyUtils.MessageBuilder([0], "400")
-                conn.send(message.get_message())
-
-            message = MyUtils.MessageBuilder([0], "400")
-            if processor and ram:
-                device_list = free_devices.list_elements()
-                for device in device_list:
-                    if device_list[device].get("cpu", None) >= processor and device_list[device].get("ram") >= ram:
-                        message = MyUtils.MessageBuilder([device_list[device].get("ip"), device_list[device].get("port")], "not_working")
-            else:
-                device_list = free_devices.list_elements()
-                rand = random.randint(0, len(device_list)-1)
-                device = free_devices.list_elements()[list(free_devices.list_elements())[rand]]
-                message = MyUtils.MessageBuilder([device.get("ip"), device.get("port")], "not_working")
-
-            conn.send(message.get_message())
+        except Exception as e:
+            print("Error:", e)
 
 
 if __name__ == '__main__':
