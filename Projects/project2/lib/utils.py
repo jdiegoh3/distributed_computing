@@ -1,0 +1,3 @@
+
+def yes():
+    print("OMG")
