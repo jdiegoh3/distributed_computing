@@ -1,5 +1,5 @@
 import utils.server_lib as library
-from utils.general_utils import PPrint, MessageHandler
+from utils.general_utils import PPrint, MessageHandler, MessageBuilder
 import socket
 import sys
 import random
@@ -7,6 +7,8 @@ import threading
 
 server_address = "localhost"
 server_port = 9999
+
+connected_clients = library.ConnectedClients()
 
 
 def client_handler(connection, address):
@@ -17,12 +19,23 @@ def client_handler(connection, address):
 
             if handler[0] == "valid_client":
                 PPrint.show("{}{}".format("New valid client connected ", address), "green")
-            connection.send("Roger".encode())
+                client_info = {
+                    "address": handler[1],
+                    "port": int(handler[2]),
+                    "page_space": library.page_space
+                }
+                connected_clients.add_element("{}{}".format(handler[1], handler[2]), client_info)
+                library.page_space += 1
+                connection.send(MessageBuilder((str(client_info.get("page_space", "")))
+                                               , "assigned_space").get_message())
+            else:
+                connection.send("Roger".encode())
         except Exception as e:
             if isinstance(e, ConnectionAbortedError):
                 PPrint.show("{}{}".format("Connection lost or aborted with the client ", address), "yellow")
             else:
                 PPrint.show("{}{}".format("Connection lost or aborted with the client ", address), "red")
+            raise e
             sys.exit(0)
 
 

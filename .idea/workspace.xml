@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1bc97f8-29eb-4adc-b9ac-2cffcb17a6a3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Projects/project2/killprocesses.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/distributed_computing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/distributed_computing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projects/project2/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/project2/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projects/project2/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/project2/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/project2/utils/client_lib.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/project2/utils/client_lib.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/project2/utils/general_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/project2/utils/general_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/project2/utils/server_lib.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/project2/utils/server_lib.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,19 +23,37 @@
       <file leaf-file-name="server.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Projects/project2/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-251">
-              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="38" />
+            <state relative-caret-position="289">
+              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client_new.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="client_new.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Projects/project2/client_new.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="170">
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client_lib.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Projects/project2/utils/client_lib.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
+              <folding>
+                <element signature="e#813#1007#0" />
+                <element signature="e#885#1140#0" />
+                <element signature="e#1093#1458#0" />
+                <element signature="e#1352#1516#0" />
               </folding>
             </state>
           </provider>
@@ -44,8 +62,8 @@
       <file leaf-file-name="server_lib.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Projects/project2/utils/server_lib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="170">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -53,14 +71,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client_lib.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Projects/project2/utils/client_lib.py">
+      <file leaf-file-name="general_utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projects/project2/utils/general_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="266">
+              <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="print.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projects/project2/print.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -68,20 +92,8 @@
       <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Projects/project2/readme.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="107" selection-start-line="4" selection-start-column="95" selection-end-line="4" selection-end-column="107" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyUtilsClient.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Projects/project2/lib/MyUtilsClient.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="49" column="18" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="49" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="48" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -89,17 +101,10 @@
       <file leaf-file-name="MyUtils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Projects/project1/lib/MyUtils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="2" selection-end-column="11" />
+            <state relative-caret-position="272">
+              <caret line="22" selection-start-line="22" selection-end-line="27" selection-end-column="12" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#73#414#0" />
-                <element signature="e#111#135#0" />
-                <element signature="e#190#222#0" />
-                <element signature="e#266#355#0" />
-                <element signature="e#394#414#0" />
-                <element signature="e#450#541#0" />
-                <element signature="e#497#541#0" />
                 <element signature="e#581#672#0" />
                 <element signature="e#628#672#0" />
                 <element signature="e#716#807#0" />
@@ -169,6 +174,7 @@
     <findStrings>
       <find>Server</find>
       <find>occupied_devices</find>
+      <find>server_connection</find>
     </findStrings>
     <dirStrings>
       <dir>D:\MyFiles\distributed_computing\Projects</dir>
@@ -180,7 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/exercise3/add_server.py" />
         <option value="$PROJECT_DIR$/exercise4/lib/ProtocolUtils.py" />
         <option value="$PROJECT_DIR$/exercise4/server.py" />
         <option value="$PROJECT_DIR$/exercise4/client.py" />
@@ -225,12 +230,13 @@
         <option value="$PROJECT_DIR$/Projects/project2/lib/utils.py" />
         <option value="$PROJECT_DIR$/Projects/project2/utils/lib.py" />
         <option value="$PROJECT_DIR$/Projects/project2/utils/killprocesses.py" />
-        <option value="$PROJECT_DIR$/Projects/project2/utils/general_utils.py" />
-        <option value="$PROJECT_DIR$/Projects/project2/utils/server_lib.py" />
+        <option value="$PROJECT_DIR$/Projects/project2/client_new.py" />
         <option value="$PROJECT_DIR$/Projects/project2/readme.md" />
+        <option value="$PROJECT_DIR$/Projects/project2/utils/server_lib.py" />
+        <option value="$PROJECT_DIR$/Projects/project2/utils/general_utils.py" />
+        <option value="$PROJECT_DIR$/Projects/project2/print.py" />
         <option value="$PROJECT_DIR$/Projects/project2/server.py" />
         <option value="$PROJECT_DIR$/Projects/project2/utils/client_lib.py" />
-        <option value="$PROJECT_DIR$/Projects/project2/client_new.py" />
       </list>
     </option>
   </component>
@@ -243,7 +249,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
     <option name="width" value="1938" />
     <option name="height" value="1032" />
@@ -274,12 +280,6 @@
               <item name="distributed_computing" type="b2602c69:ProjectViewProjectNode" />
               <item name="distributed_computing" type="462c0819:PsiDirectoryNode" />
               <item name="Projects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distributed_computing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="distributed_computing" type="462c0819:PsiDirectoryNode" />
-              <item name="Projects" type="462c0819:PsiDirectoryNode" />
-              <item name="project1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="distributed_computing" type="b2602c69:ProjectViewProjectNode" />
@@ -390,7 +390,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="0" width="1938" height="1032" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295063" />
@@ -399,8 +399,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3295063" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3295063" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35820895" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.33524683" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49913645" visible="true" weight="0.3546326" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.326257" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49913645" visible="true" weight="0.35501066" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -477,27 +477,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/exercise8/lib/ProtocolUtils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exercise8/add_server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exercise8/div_server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-113">
-          <caret line="19" column="14" lean-forward="true" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/exercise3/pow_server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -731,6 +710,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="23" column="19" selection-end-line="31" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -748,19 +730,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Projects/project1/lib/MyUtils.py">
+    <entry file="file://$PROJECT_DIR$/Projects/project2/client.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/project2/lib/MyUtils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret selection-end-line="2" selection-end-column="11" />
+          <caret selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise1/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercise1/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/project1/lib/MyUtils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" selection-start-line="22" selection-end-line="27" selection-end-column="12" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#73#414#0" />
-            <element signature="e#111#135#0" />
-            <element signature="e#190#222#0" />
-            <element signature="e#266#355#0" />
-            <element signature="e#394#414#0" />
-            <element signature="e#450#541#0" />
-            <element signature="e#497#541#0" />
             <element signature="e#581#672#0" />
             <element signature="e#628#672#0" />
             <element signature="e#716#807#0" />
@@ -816,19 +819,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Projects/project2/client.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Projects/project2/lib/MyUtils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Projects/project2/lib/MyUtilsClient.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
+        <state relative-caret-position="629">
           <caret line="49" column="18" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="49" selection-end-column="18" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
@@ -838,69 +831,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Projects/project2/readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="107" selection-start-line="4" selection-start-column="95" selection-end-line="4" selection-end-column="107" />
+        <state relative-caret-position="102">
+          <caret line="6" column="48" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exercise1/client.py">
+    <entry file="file://$PROJECT_DIR$/Projects/project2/print.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exercise1/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Projects/project2/utils/general_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Projects/project2/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-251">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Projects/project2/utils/client_lib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Projects/project2/utils/server_lib.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="863" selection-start-line="863" selection-end-line="863" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/project2/utils/general_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/project2/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Projects/project2/client_new.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="170">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/project2/0.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/project2/utils/client_lib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
+          <folding>
+            <element signature="e#813#1007#0" />
+            <element signature="e#885#1140#0" />
+            <element signature="e#1093#1458#0" />
+            <element signature="e#1352#1516#0" />
           </folding>
         </state>
       </provider>

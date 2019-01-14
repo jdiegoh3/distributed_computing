@@ -25,8 +25,8 @@ class PrintHelper(object):
     def show(self, text, color):
         color_print = self.switch(color)
         if color_print:
-            print(text)
-            # print("{}{}{}".format(color_print, text, BColors.END_COLOR))
+            # print(text)
+            print("{}{}{}".format(color_print, text, BColors.END_COLOR))
         else:
             print(text)
 
