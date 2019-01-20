@@ -22,12 +22,47 @@ def client_handler(connection, address):
                 client_info = {
                     "address": handler[1],
                     "port": int(handler[2]),
-                    "page_space": library.page_space
+                    "page_space": library.page_space,
+                    "busy": False,
                 }
-                connected_clients.add_element("{}{}".format(handler[1], handler[2]), client_info)
+                connected_clients.add_element("{}/{}".format(address[0], address[1]), client_info)
                 library.page_space += 1
                 connection.send(MessageBuilder((str(client_info.get("page_space", "")))
                                                , "assigned_space").get_message())
+
+            elif handler[0] == "request_pages":
+
+                clients_list = connected_clients.list_elements()
+                result = None
+                client_instance = None
+                for client in clients_list:
+                    client_info = clients_list.get(client)
+                    if client_info.get("page_space", None) == int(handler[1]):
+                        client_instance = client_info
+                        result = (client_info.get("address", None), client_info.get("port"))
+
+                if result:
+                    if client_instance.get("busy", None):
+                        message = MessageBuilder((), "queued")
+                    else:
+                        client_instance["busy"] = True
+                        message = MessageBuilder(result, "call_him")
+
+                else:
+                    message = MessageBuilder((), "no_exist")
+
+                connection.send(message.get_message())
+
+            elif handler[0] == "request_list_pages":
+                PPrint.show("{}{}".format("New request to list space of pages from: ", address), "green")
+                clients_list = connected_clients.list_elements()
+                result = []
+                for client in clients_list:
+                    client_info = clients_list.get(client, None)
+                    result.append(client_info.get("page_space", None))
+                message = MessageBuilder(result, "list_pages")
+                connection.send(message.get_message())
+
             else:
                 connection.send("Roger".encode())
         except Exception as e:
