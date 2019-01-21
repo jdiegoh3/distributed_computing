@@ -1,2 +1,1 @@
-Ahorasi
-Quesiapap
+error|No exist function: give_me|

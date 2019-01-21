@@ -62,7 +62,11 @@ class Client(object):
                     port = int(handler[2])
 
                     if self.my_listen_address == address and self.my_listen_port == port:
-                        print("Soy yo mismo mk")
+                        os.startfile("{}x.txt".format(space_of_pages))
+                        input("")
+                        notify_server = library.MessageBuilder([self.pages_space], "free_resource")
+                        self.server_connection.send(notify_server.get_message())
+                        PPrint.show("Saved", "green")
 
                     else:
                         request_file = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -83,7 +87,6 @@ class Client(object):
 
                         message_save = library.MessageBuilder((), "save_file")
                         request_file.send(message_save.get_message())
-                        print("ENDIADO POR SOCKET")
                         file = open("{}x.txt".format(space_of_pages), "r")
                         while True:
                             data = file.read(1024).encode()
@@ -91,7 +94,6 @@ class Client(object):
                             if len(data) < 1024:
                                 break
                         file.close()
-
                         PPrint.show("Saved", "green")
 
             elif value == 2:
@@ -114,10 +116,8 @@ class Client(object):
 
     def receiver_connection(self, connection, address):
         while 1:
-            print("Activated receiver")
             message = connection.recv(1024)
             split_message = library.MessageHandler(message).message_loads()
-            print(split_message)
             if split_message[0] == 'give_me':
                 file = open("{}.txt".format(self.pages_space), "r")
                 while True:
@@ -137,6 +137,46 @@ class Client(object):
                 file.close()
                 notify_server = library.MessageBuilder([self.pages_space], "free_resource")
                 self.server_connection.send(notify_server.get_message())
+            if split_message[0] == 'call_resource':
+                print("Call resource bitch")
+                address = split_message[1]
+                port = int(split_message[2])
+                space_of_pages = int(split_message[3])
+
+                if self.my_listen_address == address and self.my_listen_port == port:
+                    os.startfile("{}.txt".format(space_of_pages))
+                    input("")
+                    notify_server = library.MessageBuilder([self.pages_space], "free_resource")
+                    self.server_connection.send(notify_server.get_message())
+                    PPrint.show("Saved", "green")
+
+                else:
+                    request_file = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                    request_file.connect((address, port))
+                    message = library.MessageBuilder((), "give_me")
+                    request_file.send(message.get_message())
+
+                    file = open("{}.txt".format(space_of_pages), "w+")
+                    while True:
+                        info = request_file.recv(1024)
+                        file.write(info.decode("utf-8"))
+                        if len(info) < 1024:
+                            break
+                    file.close()
+                    PPrint.show("File opened, please press ENTER on this menu when you finish the edition", "green")
+                    os.startfile("{}x.txt".format(space_of_pages))
+                    input("")
+
+                    message_save = library.MessageBuilder((), "save_file")
+                    request_file.send(message_save.get_message())
+                    file = open("{}x.txt".format(space_of_pages), "r")
+                    while True:
+                        data = file.read(1024).encode()
+                        request_file.send(data)
+                        if len(data) < 1024:
+                            break
+                    file.close()
+                    PPrint.show("Saved", "green")
 
             else:
                 connection.send(library.MessageBuilder(['No exist function: ' + split_message[0]]

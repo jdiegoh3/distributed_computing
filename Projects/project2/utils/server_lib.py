@@ -27,3 +27,10 @@ class ConnectedClients(Elements):
 
     def __init__(self):
         super().__init__(self.elements)
+
+
+class QueuedClients(Elements):
+    elements = {}
+
+    def __init__(self):
+        super().__init__(self.elements)
