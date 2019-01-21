@@ -10,6 +10,10 @@
 
 # **give_me** Request to get a file
 
+# **free_resource** Free the resourced when the edition is already finished.
+
+# **save_file** Save the changes.
+
 ## Server responses
 
 # no_spaces_exists Code used to specify that space of pages request by the client isnt exists.

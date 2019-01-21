@@ -70,7 +70,6 @@ def client_handler(connection, address):
                 PPrint.show("{}{}".format("Connection lost or aborted with the client ", address), "yellow")
             else:
                 PPrint.show("{}{}".format("Connection lost or aborted with the client ", address), "red")
-            raise e
             sys.exit(0)
 
 

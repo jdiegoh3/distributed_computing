@@ -1,6 +1,7 @@
 import threading
 import utils.general_utils as library
 import socket
+import os
 
 PPrint = library.PPrint
 
@@ -36,6 +37,7 @@ class Client(object):
 
         client_options_thread = threading.Thread(target=self.interative_menu)
         client_options_thread.start()
+
 
     def interative_menu(self):
         while True:
@@ -75,7 +77,22 @@ class Client(object):
                             if len(info) < 1024:
                                 break
                         file.close()
-                        print(request_file.recv(1024))
+                        PPrint.show("File opened, please press ENTER on this menu when you finish the edition", "green")
+                        os.startfile("{}x.txt".format(space_of_pages))
+                        input("")
+
+                        message_save = library.MessageBuilder((), "save_file")
+                        request_file.send(message_save.get_message())
+                        print("ENDIADO POR SOCKET")
+                        file = open("{}x.txt".format(space_of_pages), "r")
+                        while True:
+                            data = file.read(1024).encode()
+                            request_file.send(data)
+                            if len(data) < 1024:
+                                break
+                        file.close()
+
+                        PPrint.show("Saved", "green")
 
             elif value == 2:
                 message = library.MessageBuilder((), "request_list_pages")
@@ -96,20 +113,34 @@ class Client(object):
             thread.start()
 
     def receiver_connection(self, connection, address):
-        message = connection.recv(1024)
-        split_message = library.MessageHandler(message).message_loads()
-        if split_message[0] == 'give_me':
-            file = open("{}.txt".format(self.pages_space), "r")
-            while True:
-                data = file.read(1024).encode()
-                connection.send(data)
-                if len(data) < 1024:
-                    break
-            file.close()
-        else:
-            connection.send(connection.MessageBuilder(['No exist function: ' + split_message[0]]
-                                                      , 'error').get_message())
-        connection.close()
+        while 1:
+            print("Activated receiver")
+            message = connection.recv(1024)
+            split_message = library.MessageHandler(message).message_loads()
+            print(split_message)
+            if split_message[0] == 'give_me':
+                file = open("{}.txt".format(self.pages_space), "r")
+                while True:
+                    data = file.read(1024).encode()
+                    connection.send(data)
+                    if len(data) < 1024:
+                        break
+                file.close()
+            if split_message[0] == 'save_file':
+                print("Saving File")
+                file = open("{}.txt".format(self.pages_space), "w+")
+                while True:
+                    info = connection.recv(1024)
+                    file.write(info.decode("utf-8"))
+                    if len(info) < 1024:
+                        break
+                file.close()
+                notify_server = library.MessageBuilder([self.pages_space], "free_resource")
+                self.server_connection.send(notify_server.get_message())
+
+            else:
+                connection.send(library.MessageBuilder(['No exist function: ' + split_message[0]]
+                                                          , 'error').get_message())
 
     def notify_valid_client(self):
         self.server_connection.send(library.MessageBuilder((self.my_listen_address, self.my_listen_port)
