@@ -62,7 +62,11 @@ class Client(object):
                     port = int(handler[2])
 
                     if self.my_listen_address == address and self.my_listen_port == port:
-                        os.startfile("{}x.txt".format(space_of_pages))
+                        # os.startfile("{}.txt".format(space_of_pages))
+                        file = "{}.txt".format(space_of_pages)
+                        application = "notepad.exe"
+                        osCommandString = "{} {}".format(file, application)
+                        os.system(osCommandString)
                         input("")
                         notify_server = library.MessageBuilder([self.pages_space], "free_resource")
                         self.server_connection.send(notify_server.get_message())
@@ -74,7 +78,7 @@ class Client(object):
                         message = library.MessageBuilder((), "give_me")
                         request_file.send(message.get_message())
 
-                        file = open("{}x.txt".format(space_of_pages), "w+")
+                        file = open("{}.txt".format(space_of_pages), "w+")
                         while True:
                             info = request_file.recv(1024)
                             file.write(info.decode("utf-8"))
@@ -82,12 +86,16 @@ class Client(object):
                                 break
                         file.close()
                         PPrint.show("File opened, please press ENTER on this menu when you finish the edition", "green")
-                        os.startfile("{}x.txt".format(space_of_pages))
+                        # os.startfile("{}.txt".format(space_of_pages))
+                        file = "{}.txt".format(space_of_pages)
+                        application = "notepad.exe"
+                        osCommandString = "{} {}".format(file, application)
+                        os.system(osCommandString)
                         input("")
 
                         message_save = library.MessageBuilder((), "save_file")
                         request_file.send(message_save.get_message())
-                        file = open("{}x.txt".format(space_of_pages), "r")
+                        file = open("{}.txt".format(space_of_pages), "r")
                         while True:
                             data = file.read(1024).encode()
                             request_file.send(data)
@@ -144,7 +152,11 @@ class Client(object):
                 space_of_pages = int(split_message[3])
 
                 if self.my_listen_address == address and self.my_listen_port == port:
-                    os.startfile("{}.txt".format(space_of_pages))
+                    # os.startfile("{}.txt".format(space_of_pages))
+                    file = "{}.txt".format(space_of_pages)
+                    application = "notepad.exe"
+                    osCommandString = "{} {}".format(file, application)
+                    os.system(osCommandString)
                     input("")
                     notify_server = library.MessageBuilder([self.pages_space], "free_resource")
                     self.server_connection.send(notify_server.get_message())
@@ -164,12 +176,16 @@ class Client(object):
                             break
                     file.close()
                     PPrint.show("File opened, please press ENTER on this menu when you finish the edition", "green")
-                    os.startfile("{}x.txt".format(space_of_pages))
+                    # os.startfile("{}.txt".format(space_of_pages))
+                    file = "{}.txt".format(space_of_pages)
+                    application = "notepad.exe"
+                    osCommandString = "{} {}".format(file, application)
+                    os.system(osCommandString)
                     input("")
 
                     message_save = library.MessageBuilder((), "save_file")
                     request_file.send(message_save.get_message())
-                    file = open("{}x.txt".format(space_of_pages), "r")
+                    file = open("{}.txt".format(space_of_pages), "r")
                     while True:
                         data = file.read(1024).encode()
                         request_file.send(data)

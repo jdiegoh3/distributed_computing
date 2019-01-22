@@ -5,7 +5,7 @@ import sys
 import random
 import threading
 
-server_address = "localhost"
+server_address = "192.168.0.5"
 server_port = 9999
 
 connected_clients = library.ConnectedClients()
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     socket_instance = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socket_instance.bind((server_address, server_port))
     socket_instance.listen(10)
-    PPrint.show("Server running ...", "green")
+    PPrint.show("{}{}".format("Server running on ", socket.gethostbyname(socket.gethostname())), "green")
 
     while True:
         connection, address = socket_instance.accept()

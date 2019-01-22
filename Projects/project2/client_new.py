@@ -1,6 +1,6 @@
 import utils.client_lib as library
 from utils.general_utils import PPrint
-server_address = "localhost"
+server_address = "192.168.0.5"
 server_port = 9999
 
 
